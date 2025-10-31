@@ -1,9 +1,8 @@
-# movement.gd
 class_name Movement
 
 var sprinting := false
 
-func handle(body: CharacterBody3D, stats: PlayerStats, delta: float) -> void:
+func process(body: CharacterBody3D, stats: Stats, delta: float) -> void:
 	var speed = stats.base_speed
 
 	# Add the gravity.

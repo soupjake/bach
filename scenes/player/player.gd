@@ -1,7 +1,9 @@
 extends CharacterBody3D
 
-var stats: PlayerStats
+var stats := Stats.new()
 var movement := Movement.new()
+var shoot := Shoot.new()
 
 func _physics_process(delta: float) -> void:
-	movement.handle(self, stats, delta)
+	movement.process(self, stats, delta)
+	shoot.process(delta)
