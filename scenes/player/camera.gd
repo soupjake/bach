@@ -2,9 +2,9 @@ extends Node3D
 
 @export var character: CharacterBody3D
 
-var camera_rotation: Vector2 = Vector2.ZERO
-var mouse_sensitivity: float = 0.001
-var max_y_rotation: float = 1.5
+var camera_rotation := Vector2.ZERO
+var mouse_sensitivity := 0.001
+var max_y_rotation := 1.5
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
