@@ -2,6 +2,8 @@ extends CharacterBody2D
 
 signal health_depleted
 
+@onready var hud = get_tree().get_nodes_in_group("hud")[0]
+
 var health := 100.0
 var move_speed := 600.0
 var dash_speed := 1200.0
@@ -13,7 +15,7 @@ var cooldown_timer := 0.0
 var is_dashing := false
 var dash_direction := Vector2.ZERO
 
-const DAMAGE_RATE := 6.0
+var damage_rate := 6.0
 
 
 func _physics_process(delta: float) -> void:
@@ -42,8 +44,8 @@ func _physics_process(delta: float) -> void:
 	
 	var overlapping_mobs = %HurtBox.get_overlapping_bodies()
 	if overlapping_mobs:
-		health -= DAMAGE_RATE * overlapping_mobs.size() * delta
-		%HealthBar.value = health
+		health -= damage_rate * overlapping_mobs.size() * delta
+		hud.set_health(health)
 		if health <= 0.0:
 			health_depleted.emit()
 
